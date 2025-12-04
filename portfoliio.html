@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honor Cho - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #fce7f3 0%, #ffe4e6 50%, #fce7f3 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(90deg, #ec4899 0%, #f43f5e 100%);
+            color: white;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #fbcfe8;
+            font-size: 1.2rem;
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            padding: 0 2rem;
+            overflow-x: auto;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 1rem 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #6b7280;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            color: #ec4899;
+        }
+
+        .nav-btn.active {
+            color: #ec4899;
+            border-bottom-color: #ec4899;
+            font-weight: 600;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            color: #ec4899;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-pink {
+            color: #ec4899;
+            font-weight: 600;
+        }
+
+        .text-gray {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .text-content {
+            color: #374151;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .skills-interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-box {
+            background: #fce7f3;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .skill-box h3 {
+            color: #ec4899;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #374151;
+            border: 1px solid #fbcfe8;
+        }
+
+        .interest-list {
+            list-style: none;
+            color: #374151;
+        }
+
+        .interest-list li {
+            padding: 0.25rem 0;
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .icon {
+            color: #ec4899;
+            font-size: 1.8rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .experience-list {
+            margin-left: 3rem;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .experience-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(90deg, #fce7f3 0%, #ffe4e6 100%);
+            border-left: 4px solid #ec4899;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #ec4899;
+        }
+
+        .contact-note {
+            background: #fce7f3;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            text-align: center;
+            color: #374151;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #ec4899 0%, #f43f5e 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .nav-content {
+                gap: 1rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .experience-list {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Honor Cho</h1>
+            <p class="subtitle">Cognitive Science • Mathematics • Clean Technology</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <button class="nav-btn active" onclick="showSection('about')">About</button>
+            <button class="nav-btn" onclick="showSection('education')">Education</button>
+            <button class="nav-btn" onclick="showSection('experience')">Experience</button>
+            <button class="nav-btn" onclick="showSection('activities')">Activities</button>
+            <button class="nav-btn" onclick="showSection('contact')">Contact</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <div id="about" class="section active">
+            <div class="card">
+                <h2>About Me</h2>
+                <p class="text-content">
+                    Hello! I'm Honor Cho, a Cognitive Science student at UCLA with a passion for understanding 
+                    the intersection of human cognition, technology, and environmental sustainability.
+                </p>
+                <p class="text-content">
+                    My background spans mathematics, programming, and clean technology. I've had the privilege 
+                    of working with SCAQMD on clean transportation initiatives, helping advance the transition 
+                    to zero-emission vehicles and sustainable solutions.
+                </p>
+                <p class="text-content">
+                    I'm driven by curiosity about how we think, learn, and interact with technology—and how 
+                    we can use these insights to create a more sustainable future.
+                </p>
+
+                <div class="skills-interests-grid">
+                    <div class="skill-box">
+                        <h3>💻 Skills</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Mathematics</span>
+                            <span class="tag">Critical Thinking</span>
+                            <span class="tag">Research</span>
+                            <span class="tag">Communication</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-box">
+                        <h3>❤️ Interests</h3>
+                        <ul class="interest-list">
+                            <li>• Environmental sustainability</li>
+                            <li>• Product design</li>
+                            <li>• Human cognition</li>
+                            <li>• Technology & society</li>
+                            <li>• Beauty</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div id="education" class="section">
+            <div class="card">
+                <div class="experience-header">
+                    <span class="icon">📚</span>
+                    <div>
+                        <h3>University of California, Los Angeles</h3>
+                        <p class="text-pink">Bachelor of Science in Cognitive Science</p>
+                        <p class="text-gray">Expected 2027</p>
+                        <p class="text-content"><strong>Relevant Coursework:</strong> Introduction to Cognitive Science</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="experience-header">
+                    <span class="icon">🏆</span>
+                    <div>
+                        <h3>Orange Coast College</h3>
+                        <p class="text-pink">Associate's in Mathematics | Honors Program</p>
+                        <p class="text-gray">2022 - 2025</p>
+                        <p class="text-content"><strong>Relevant Coursework:</strong> Introduction to Psychology, Java 1, C++1 & 2, Art History</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div id="experience" class="section">
+            <div class="card">
+                <div class="experience-header">
+                    <span class="icon">💼</span>
+                    <div>
+                        <h3>Technology Advancement Office Governing Board Intern</h3>
+                        <p class="text-pink">South Coast Air Quality Management District (SCAQMD)</p>
+                        <p class="text-gray">May 2025 - Aug 2025</p>
+                    </div>
+                </div>
+                <ul class="experience-list">
+                    <li>• Supported projects advancing clean transportation, including transition from diesel to zero-emission electric trucks</li>
+                    <li>• Evaluated clean energy technologies and assessed environmental impact for adoption of sustainable solutions</li>
+                    <li>• Collaborated with major trucking companies, partners, and researchers to implement innovative clean air strategies</li>
+                    <li>• Applied data analysis and technical evaluation to address large-scale environmental challenges</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="experience-header">
+                    <span class="icon">💼</span>
+                    <div>
+                        <h3>Math Tutor</h3>
+                        <p class="text-pink">Orange Coast College Math Center</p>
+                        <p class="text-gray">Aug 2024 - May 2025</p>
+                    </div>
+                </div>
+                <ul class="experience-list">
+                    <li>• Provided drop-in and one-on-one tutoring for diverse student populations, including equity appointments for veterans and underserved students</li>
+                    <li>• Led calculus study groups and reviewed materials to explain complex topics clearly</li>
+                    <li>• Helped improve student confidence and performance through tailored instruction and mentoring</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="experience-header">
+                    <span class="icon">💼</span>
+                    <div>
+                        <h3>Cashier</h3>
+                        <p class="text-pink">Lake Chabot Marina & Cafe</p>
+                        <p class="text-gray">Jul 2022 - Aug 2022</p>
+                    </div>
+                </div>
+                <ul class="experience-list">
+                    <li>• Managed rentals, stock, and customer service operations with focus on accuracy and efficiency</li>
+                    <li>• Led team projects to improve café operations, quality of service, and client satisfaction</li>
+                    <li>• Applied detail-oriented observation to maintain high sanitation and presentation standards</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="experience-header">
+                    <span class="icon">💼</span>
+                    <div>
+                        <h3>Boutique Assistant</h3>
+                        <p class="text-pink">Cartier</p>
+                        <p class="text-gray">Dec 2021 - Jan 2022</p>
+                    </div>
+                </div>
+                <ul class="experience-list">
+                    <li>• Supported boutique operations through strategic stock management and customer engagement</li>
+                    <li>• Assisted in product presentation and hospitality services to ensure luxury client experience</li>
+                    <li>• Strengthened communication skills through personalized service in a fast-paced retail environment</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Activities Section -->
+        <div id="activities" class="section">
+            <div class="card">
+                <h2>Activities & Leadership</h2>
+                <div class="highlight-box">
+                    <h3>Girls Who Code</h3>
+                    <p class="text-pink">Lead Organizer</p>
+                    <p class="text-content">
+                        Facilitated coding review and project sessions, shared personal projects, and fostered an 
+                        inclusive space for girls in tech. Passionate about promoting diversity and accessibility 
+                        in computer science and technology fields.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="section">
+            <div class="card">
+                <h2>Get In Touch</h2>
+                <div class="contact-item">
+                    <span class="icon">✉️</span>
+                    <a href="mailto:chohonor@gmail.com">chohonor@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <a href="tel:5103299845">(510) 329-9845</a>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span>Los Angeles, CA</span>
+                </div>
+
+                <div class="contact-note">
+                    <p>
+                        I'm always interested in connecting with others passionate about cognitive science, 
+                        sustainability, and technology. Feel free to reach out!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Honor Cho. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
